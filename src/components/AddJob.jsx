@@ -33,7 +33,10 @@ export default function AddJob({ onAddJob }) {
             const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3010';
             const response = await fetch(`${apiUrl}/api/jobs/parse`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'x-gemini-api-key': localStorage.getItem('user_gemini_api_key') || ''
+                },
                 body: JSON.stringify({ url: linkedinUrl, text: jobText })
             });
 

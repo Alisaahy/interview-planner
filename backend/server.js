@@ -15,10 +15,8 @@ const port = 3010;
 app.use(cors());
 app.use(express.json());
 
-// Initialize Gemini
-const ai = new GoogleGenAI({
-    apiKey: process.env.VITE_GEMINI_API_KEY
-});
+// Initialize Gemini dynamically per request instead of globally
+
 
 const JOB_PARSER_PROMPT = `You are an expert technical recruiter and job parser.
 Extract the following information and return exactly a JSON object matching this schema:
@@ -111,11 +109,13 @@ app.post('/api/jobs/parse', async (req, res) => {
         }
 
         // Now call AI to parse the structured data
+        const reqApiKey = req.headers['x-gemini-api-key'] || null;
         console.log("Calling AI to parse structured data...");
         const parsedData = await generateWithFallback(
             `Parse this job description:\n\n${jobDescription}`,
             JOB_PARSER_PROMPT,
-            true
+            true,
+            reqApiKey
         );
 
         res.json(parsedData);
@@ -140,9 +140,15 @@ const parseJSONFromText = (text) => {
     }
 };
 
-async function generateWithFallback(prompt, systemInstruction, isJson = false) {
+async function generateWithFallback(prompt, systemInstruction, isJson = false, reqApiKey = null) {
+    const apiKey = reqApiKey || process.env.VITE_GEMINI_API_KEY;
+    if (!apiKey || apiKey.includes('your_gemini')) {
+        throw new Error("No Google Gemini API key provided. Please add one in Settings or set VITE_GEMINI_API_KEY.");
+    }
+    const aiClient = new GoogleGenAI({ apiKey });
+
     try {
-        const aiResponse = await ai.models.generateContent({
+        const aiResponse = await aiClient.models.generateContent({
             model: 'gemini-2.5-pro',
             contents: prompt,
             config: {
@@ -248,7 +254,8 @@ Rules:
 
 Job Description:\n${jobText}\n\nCandidate Resume:\n${resumeText}`,
             "You are an expert career coach. Write a cover letter that is personal, impact-driven, and company-specific. Be extremely careful to only attribute work to the correct employer. Speak to organizational-level outcomes, not granular metrics. Avoid internal project codes or niche acronyms.",
-            false
+            false,
+            req.headers['x-gemini-api-key'] || null
         );
 
         res.json({ result: resultText.replace(/\[Your Name\]/gi, '[User Name]') });
@@ -289,7 +296,8 @@ Return ONLY a valid JSON array.
 
 Job Description:\n${jobText}\n\nCandidate Resume:\n${resumeText}`,
             "You are an expert resume editor. Rephrase bullets to be CLEARER and more job-aligned. Expand domain acronyms as 'Acronym (Full Name)'. Never fabricate different work. Return ONLY a JSON array of {original, adjusted} objects.",
-            true
+            true,
+            req.headers['x-gemini-api-key'] || null
         );
 
         // Normalize bullets to always be an array of {original, adjusted} objects
@@ -378,7 +386,8 @@ OUTPUT ONLY the message. No subject line. No preamble like "Here is the message:
 
 Job Description:\n${jobText}\n\nCandidate Resume:\n${resumeText}`,
             "You are a job candidate writing a polished, natural cold outreach message in first person. Keep it under 150 words. Write in short paragraphs. Be specific, genuine, and professional — like a real human message. Avoid granular internal metrics or project codes.",
-            false
+            false,
+            req.headers['x-gemini-api-key'] || null
         );
 
         // Strip any preamble the AI may have added before the actual message
@@ -404,7 +413,8 @@ app.post('/api/generate/custom-question', async (req, res) => {
         const resultText = await generateWithFallback(
             `I am the candidate. Please answer this question from my perspective: ${question}\n\nContext - Job Description:\n${jobText}\n\nContext - My Resume:\n${resumeText}`,
             "You ARE the candidate. Answer every question in the FIRST PERSON ('I', 'my', 'me'). DO NOT offer advice. DO NOT use the second person ('you', 'your'). DO NOT address the user. DO NOT start with a preamble or introduction. Provide a direct, plain-text response that I can use as my own words. NO markdown formatting like bold (**) or italics (*).",
-            false
+            false,
+            req.headers['x-gemini-api-key'] || null
         );
 
         res.json({ result: resultText });

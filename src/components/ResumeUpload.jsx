@@ -90,6 +90,9 @@ export default function ResumeUpload({ onSaveResume, setCurrentView }) {
             const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3010';
             const response = await fetch(`${apiUrl}/api/resume/upload`, {
                 method: 'POST',
+                headers: {
+                    'x-gemini-api-key': localStorage.getItem('user_gemini_api_key') || ''
+                },
                 body: formData
             });
 

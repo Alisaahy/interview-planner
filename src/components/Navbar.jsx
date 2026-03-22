@@ -11,6 +11,7 @@ export default function Navbar({ currentView, setCurrentView }) {
                 <a href="#" className={`nav-link ${currentView === 'landing' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); setCurrentView('landing'); }}>Home</a>
                 <a href="#" className={`nav-link ${currentView === 'dashboard' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); setCurrentView('dashboard'); }}>Jobs</a>
                 <a href="#" className={`nav-link ${currentView === 'interview' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); setCurrentView('interview'); }}>Interview</a>
+                <a href="#" className={`nav-link ${currentView === 'settings' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); setCurrentView('settings'); }}>Settings</a>
             </nav>
             <div className="navbar-right">
                 <button className="btn-primary" style={{ borderRadius: 'var(--radius-full)', display: 'flex', gap: '0.5rem', alignItems: 'center' }} onClick={() => setCurrentView('resume')}>

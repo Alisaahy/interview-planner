@@ -1,10 +1,11 @@
 import { GoogleGenAI } from '@google/genai';
 
-// Initialize the SDK only if a real key is present to prevent crashes in production
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-const ai = (apiKey && !apiKey.includes('your_gemini')) 
-    ? new GoogleGenAI({ apiKey }) 
-    : null;
+function getAiClient() {
+    const localKey = localStorage.getItem('user_gemini_api_key');
+    const envKey = import.meta.env.VITE_GEMINI_API_KEY;
+    const apiKey = localKey || envKey;
+    return (apiKey && !apiKey.includes('your_gemini')) ? new GoogleGenAI({ apiKey }) : null;
+}
 
 /**
  * Mocks the AI generation if no API key is present for easier local UI dev.
@@ -17,7 +18,8 @@ const mockDelay = (ms) => new Promise(res => setTimeout(res, ms));
  * @param {string} userPrompt 
  */
 export async function generateJSONWithGemini(systemPrompt, userPrompt) {
-    if (!import.meta.env.VITE_GEMINI_API_KEY || import.meta.env.VITE_GEMINI_API_KEY.includes('your_gemini')) {
+    const ai = getAiClient();
+    if (!ai) {
         console.warn("No valid GEMINI_API_KEY found. Simulating an AI delay and returning null to trigger fallback/mock data.");
         await mockDelay(1500);
         return null;
@@ -72,7 +74,8 @@ export async function generateJSONWithGemini(systemPrompt, userPrompt) {
  * @param {string} userPrompt 
  */
 export async function generateTextWithGemini(systemPrompt, userPrompt) {
-    if (!import.meta.env.VITE_GEMINI_API_KEY || import.meta.env.VITE_GEMINI_API_KEY.includes('your_gemini')) {
+    const ai = getAiClient();
+    if (!ai) {
         console.warn("No valid GEMINI_API_KEY found. Simulating an AI delay and returning standard string.");
         await mockDelay(1500);
         return "This is a mock AI generated answer since no API key is present. To get real answers, please add your GEMINI_API_KEY to the .env file.";

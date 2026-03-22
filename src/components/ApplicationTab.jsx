@@ -44,7 +44,10 @@ export default function ApplicationTab({ job, userResume }) {
             const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3010';
             const response = await fetch(`${apiUrl}/api/generate/${endpoint}`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'x-gemini-api-key': localStorage.getItem('user_gemini_api_key') || ''
+                },
                 body: JSON.stringify({
                     jobText: JSON.stringify(job), // Since we only have the parsed job object here
                     resumeText: userResume,

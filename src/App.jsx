@@ -7,6 +7,7 @@ import GlobalInterviewDashboard from './components/GlobalInterviewDashboard'
 import ResumeUpload from './components/ResumeUpload'
 import AddJob from './components/AddJob'
 import QuestionBankManager from './components/QuestionBankManager'
+import Settings from './components/Settings'
 import { QUESTION_BANKS } from './mockData'
 
 function App() {
@@ -77,6 +78,7 @@ function App() {
         {currentView === 'manage-questions' && <QuestionBankManager questionBank={questionBank} setQuestionBank={setQuestionBank} setCurrentView={setCurrentView} />}
         {currentView === 'resume' && <ResumeUpload onSaveResume={setUserResume} setCurrentView={setCurrentView} />}
         {currentView === 'addjob' && <AddJob onAddJob={handleAddJob} />}
+        {currentView === 'settings' && <Settings />}
       </main>
     </div>
   )
