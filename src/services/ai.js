@@ -1,9 +1,10 @@
 import { GoogleGenAI } from '@google/genai';
 
-// Initialize the SDK using the Vite environment variable
-const ai = new GoogleGenAI({
-    apiKey: import.meta.env.VITE_GEMINI_API_KEY
-});
+// Initialize the SDK only if a real key is present to prevent crashes in production
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+const ai = (apiKey && !apiKey.includes('your_gemini')) 
+    ? new GoogleGenAI({ apiKey }) 
+    : null;
 
 /**
  * Mocks the AI generation if no API key is present for easier local UI dev.
