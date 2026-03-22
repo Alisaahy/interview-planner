@@ -2,6 +2,7 @@ services:
   # The Node.js Express Backend
   - type: web
     name: interview-planner-api
+    plan: free
     env: node
     rootDir: backend
     buildCommand: npm install
