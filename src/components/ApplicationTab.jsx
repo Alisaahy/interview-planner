@@ -41,7 +41,8 @@ export default function ApplicationTab({ job, userResume }) {
 
         setIsGenerating(prev => ({ ...prev, [type]: true }));
         try {
-            const response = await fetch(`http://localhost:3010/api/generate/${endpoint}`, {
+            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3010';
+            const response = await fetch(`${apiUrl}/api/generate/${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

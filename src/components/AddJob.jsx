@@ -30,7 +30,8 @@ export default function AddJob({ onAddJob }) {
 
         setIsLoading(true);
         try {
-            const response = await fetch('/api/jobs/parse', {
+            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3010';
+            const response = await fetch(`${apiUrl}/api/jobs/parse`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ url: linkedinUrl, text: jobText })

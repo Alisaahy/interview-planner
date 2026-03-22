@@ -87,7 +87,8 @@ export default function ResumeUpload({ onSaveResume, setCurrentView }) {
 
         setIsLoading(true);
         try {
-            const response = await fetch('http://localhost:3010/api/resume/upload', {
+            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3010';
+            const response = await fetch(`${apiUrl}/api/resume/upload`, {
                 method: 'POST',
                 body: formData
             });

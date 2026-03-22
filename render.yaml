@@ -1,0 +1,24 @@
+services:
+  # The Node.js Express Backend
+  - type: web
+    name: interview-planner-api
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+  # The Vite React Frontend
+  - type: web
+    name: interview-planner-ui
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: interview-planner-api
+          envVarKey: RENDER_EXTERNAL_URL
