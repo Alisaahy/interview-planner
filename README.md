@@ -1,16 +1,62 @@
-# React + Vite
+# AI-Powered Interview Planner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A comprehensive, full-stack application designed to streamline the job application and interview preparation process. Built with **React** (Frontend) and **Express/Node.js** (Backend), this app leverages the **Google Gemini API** to generate highly tailored content based on your resume and targeted job descriptions.
 
-Currently, two official plugins are available:
+## 🔥 Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Job Dashboard & Portfolio Management**: Easily track your applications across different stages (Applying, Interviewing, Offer).
+- **Automated Job Parsing**: Instantly scrape and extract structured data from LinkedIn URLs or direct text using the Jina AI reader and Gemini.
+- **AI-Generated Cover Letters & Outreach**: Automatically draft personalized cover letters and short, punchy cold outreach messages to recruiters using your exact qualifications.
+- **Custom Interview Questions**: Ask an AI "career coach" any question (e.g., "Why am I a good fit for this role?") and receive a strictly first-person, actionable response ready to be used in your interview.
+- **Resume Tailoring & Bullet Generation**: Analyze the gap between your uploaded resume and a job description to generate optimized bullet points.
+- **Categorized Question Bank**: Practice common behavioral and technical interview questions (A/B Testing, Machine Learning, Deep Learning, etc.).
 
-## React Compiler
+## 🛠 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend**: React, Vite, CSS (Responsive Glassmorphism Design)
+- **Backend**: Express, Node.js, Apify Client / Jina AI (for scraping), Multer (file uploads), PDF-Parse (resume extraction)
+- **AI Integration**: Google Generative AI (Gemini 2.5 Pro) with local fallback to Ollama (Llama 3.2).
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+- Node.js (v18+)
+- A [Google Gemini API Key](https://aistudio.google.com/)
+
+### Installation & Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/interview-planner.git
+   cd interview-planner
+   ```
+
+2. **Set up Environment Variables:**
+   Create a `.env` file in the root directory and add your keys:
+   ```env
+   VITE_GEMINI_API_KEY=your_gemini_api_key_here
+   ```
+
+3. **Install Backend Dependencies & Start Server:**
+   ```bash
+   cd backend
+   npm install
+   npm run dev
+   ```
+   *The backend will start on `http://localhost:3010`.*
+
+4. **Install Frontend Dependencies & Start App:**
+   Open a new terminal window in the root directory:
+   ```bash
+   npm install
+   npm run dev
+   ```
+   *The frontend will start on `http://localhost:5173`.*
+
+## 🔒 Privacy & Security
+
+This project has been scrubbed of all personal identifying information (PII) and hardcoded API keys. Environment variables and node modules are explicitly ignored in `.gitignore`. Custom AI prompts use variables to keep the user's identity dynamically injected rather than hardcoded.
+
+## 🤝 Contributing
+
+Feel free to fork this project, submit pull requests, or open issues to suggest new features or report bugs!
