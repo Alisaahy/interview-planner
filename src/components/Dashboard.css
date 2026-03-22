@@ -1,0 +1,24 @@
+/* src/components/Dashboard.css */
+.dashboard-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* Prevent body scroll, manage within children */
+}
+
+.dashboard-content {
+    flex: 1;
+    padding: 2.5rem;
+    overflow-y: auto;
+    height: calc(100vh - 100px);
+}
+
+.empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--color-text-muted);
+    font-size: 1.25rem;
+}

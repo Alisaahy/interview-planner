@@ -1,0 +1,126 @@
+/* src/components/GlobalInterviewDashboard.css */
+.global-interview-dashboard {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.daily-questions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.questions-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.interactive-card:active {
+    transform: translateY(0);
+}
+
+/* Modal Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    animation: modal-fade-in 0.2s ease-out;
+}
+
+@keyframes modal-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.question-card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-height: 250px;
+}
+
+.question-card.minimal {
+    padding: 1.5rem;
+    min-height: 200px;
+    gap: 1rem;
+}
+
+.question-card h3 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    color: var(--color-text-main);
+    font-weight: 600;
+}
+
+.question-card h4 {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--color-text-main);
+    font-weight: 500;
+}
+
+.card-tag {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.behavior .card-tag {
+    color: var(--brand-purple);
+}
+
+.product .card-tag {
+    color: var(--brand-orange);
+}
+
+.mt-auto {
+    margin-top: auto;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .questions-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .daily-questions-grid {
+        grid-template-columns: 1fr;
+    }
+}

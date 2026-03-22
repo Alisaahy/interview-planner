@@ -1,0 +1,265 @@
+/* src/components/ApplicationTab.css */
+.application-tab {
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-tabs {
+    display: flex;
+    gap: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 0;
+    margin-bottom: 2rem;
+}
+
+.sub-tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 1rem;
+    margin-bottom: -1px;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all var(--transition-fast);
+}
+
+.sub-tab-btn:hover {
+    color: var(--color-text-main);
+}
+
+.sub-tab-btn.active {
+    border-bottom-color: var(--brand-purple);
+    color: var(--brand-purple);
+    font-weight: 600;
+}
+
+.tab-icon {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.job-scan-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.job-highlights-section {
+    margin-bottom: 2rem;
+}
+
+.highlights-title {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--brand-purple-dark);
+    font-size: 1.1rem;
+}
+
+.highlights-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    max-width: 400px;
+    color: var(--color-text-main);
+    font-size: 0.95rem;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.meta-icon {
+    opacity: 0.7;
+}
+
+.full-width-item {
+    grid-column: 1 / -1;
+}
+
+.application-main-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+}
+
+.highlights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.highlight-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    border-radius: 20px;
+}
+
+.highlight-row.warning-bg {
+    background-color: #FFFbeb;
+}
+
+.highlight-row.success-bg {
+    background-color: #e6f7ec;
+}
+
+.row-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 220px;
+}
+
+.highlight-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.warning-icon {
+    background-color: #FBBF24;
+    color: white;
+}
+
+.success-icon {
+    background-color: #10B981;
+    color: white;
+}
+
+.highlight-label {
+    font-weight: 500;
+    color: var(--color-text-main);
+    font-size: 0.95rem;
+}
+
+.highlight-value {
+    flex: 1;
+    text-align: right;
+    font-weight: 400;
+    color: var(--color-text-main);
+    font-size: 0.95rem;
+}
+
+.skills-tags,
+.benefits-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.skill-tag.solid-white,
+.benefit-tag.solid-white {
+    background-color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    font-weight: 500;
+}
+
+.skill-tag.solid-white {
+    color: var(--color-text-main);
+}
+
+.benefit-tag.solid-white {
+    color: #047857;
+}
+
+.company-info-panel {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 2.5rem;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    align-self: start;
+}
+
+.company-header {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.company-logo-square {
+    width: 60px;
+    height: 60px;
+    background-color: #EEF2FF;
+    color: #4F46E5;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.company-header h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.company-meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+.meta-label {
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+    font-size: 0.85rem;
+}
+
+.meta-value {
+    color: var(--color-text-main);
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.meta-link {
+    color: #3B82F6;
+    text-decoration: none;
+    font-weight: 500;
+    word-break: break-all;
+}
+
+.meta-link:hover {
+    text-decoration: underline;
+}
+
+.company-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text-main);
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 1024px) {
+    .application-main-content {
+        grid-template-columns: 1fr;
+    }
+}

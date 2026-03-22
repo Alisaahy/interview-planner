@@ -1,0 +1,25 @@
+/* src/components/AddJob.css */
+.add-job-page {
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 100px);
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.text-sm {
+    font-size: 0.9rem;
+}
+
+.p-4 {
+    padding: 1.5rem;
+}
+
+.parsed-summary {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--glass-border);
+}

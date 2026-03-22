@@ -1,0 +1,115 @@
+/* src/components/ResumeUpload.css */
+.resume-upload-page {
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 100px);
+}
+
+.upload-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 3rem;
+}
+
+.upload-box {
+    border: 2px dashed var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 3rem 2rem;
+    background-color: var(--bg-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.upload-box:hover {
+    border-color: var(--brand-purple);
+    background-color: var(--brand-purple-light);
+}
+
+.divider {
+    margin: 2rem 0;
+    position: relative;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 0 1rem;
+}
+
+.text-input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.text-input:focus {
+    outline: 2px solid var(--brand-purple);
+    border-color: transparent;
+}
+
+.success-banner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--success-green-light);
+    color: #065F46;
+    /* text-emerald-900 */
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+}
+
+.bullets-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.bullet-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+}
+
+.btn-icon {
+    color: var(--color-text-muted);
+    font-size: 1.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+}
+
+.btn-icon:hover {
+    background-color: #FEE2E2;
+    color: #B91C1C;
+}
+
+.mb-4 {
+    margin-bottom: 2rem;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.w-full {
+    width: 100%;
+}

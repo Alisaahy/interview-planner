@@ -1,0 +1,187 @@
+/* src/components/Sidebar.css */
+.sidebar {
+    background-color: white;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    height: calc(100vh - 100px);
+    padding: 1.5rem;
+    overflow-y: hidden;
+    flex-shrink: 0;
+    transition: width var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.sidebar.is-resizing {
+    transition: none;
+}
+
+.sidebar-resizer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 100%;
+    cursor: col-resize;
+    z-index: 100;
+}
+
+.sidebar-resizer:hover,
+.sidebar.is-resizing .sidebar-resizer {
+    background-color: rgba(147, 51, 234, 0.1);
+}
+
+.sidebar-top-section {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+    padding-bottom: 0.5rem;
+}
+
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    padding: 0.6rem 0.8rem;
+    gap: 0.5rem;
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: var(--color-text-main);
+}
+
+.search-input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.sidebar-pill-tabs {
+    display: flex;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    /* light grey border container */
+    border-radius: 16px;
+    padding: 0.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.pill-tab {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.5rem 0.25rem;
+    border-radius: 12px;
+    transition: all var(--transition-fast);
+}
+
+.pill-tab:hover {
+    color: var(--color-text-main);
+}
+
+.pill-tab.active {
+    background-color: #EBE5FC;
+    /* light purple from screenshot */
+    color: #5534D9;
+    /* deeper purple text */
+    font-weight: 600;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.sidebar-list-container {
+    overflow-y: auto;
+    flex: 1;
+    /* Hide scrollbar for cleaner look */
+    scrollbar-width: none;
+}
+
+.sidebar-list-container::-webkit-scrollbar {
+    display: none;
+}
+
+.job-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.job-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.25rem 1rem;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border-radius: 16px;
+}
+
+.job-item:hover {
+    background-color: #fafafa;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+}
+
+.delete-job-btn {
+    opacity: 0;
+    color: var(--color-text-muted);
+    background: transparent;
+    border: none;
+    padding: 0.25rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.delete-job-btn:hover {
+    color: #DC2626;
+    background-color: #FEE2E2;
+}
+
+.job-item:hover .delete-job-btn {
+    opacity: 1;
+}
+
+.job-item.active {
+    background-color: var(--brand-purple-light) !important;
+    border-color: rgba(147, 51, 234, 0.15) !important;
+}
+
+.job-status-badge {
+    font-size: 0.75rem;
+    color: var(--color-text-main);
+    background-color: #f3f4f6;
+    /* Very light subtle grey/purple */
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-full);
+    font-weight: 500;
+}
+
+.job-company {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+    color: var(--color-text-main);
+}
+
+.job-role {
+    font-size: 0.85rem;
+}

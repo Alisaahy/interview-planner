@@ -1,0 +1,33 @@
+/* src/components/InterviewTab.css */
+.interview-tab {
+    margin-top: 1.5rem;
+}
+
+.setup-panel {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.config-section label {
+    font-weight: 500;
+}
+
+.options-grid button.active {
+    background-color: var(--brand-purple-light);
+    border-color: var(--brand-purple);
+    color: var(--brand-purple-dark);
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+.mb-4 {
+    margin-bottom: 2rem;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+    display: block;
+}
